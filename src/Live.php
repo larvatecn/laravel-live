@@ -10,6 +10,10 @@ namespace Larva\Live;
 use Illuminate\Support\Facades\Facade;
 use Larva\Live\Contracts\Factory;
 
+/**
+ * Class Live
+ * @author Tongle Xu <xutongle@gmail.com>
+ */
 class Live extends Facade
 {
     /**

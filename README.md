@@ -9,13 +9,12 @@
 
 ## 平台支持
 
-- [阿里云](http://lbsyun.baidu.com)
-- [腾讯云](https://lbs.amap.com)
-
+- [阿里云](https://www.aliyun.com/product/live)
+- [腾讯云](https://cloud.tencent.com/product/css)
 
 ## 环境需求
 
-- PHP >= 7.2.5
+- PHP >= 7.4
 
 ## Installation
 

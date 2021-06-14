@@ -1,0 +1,35 @@
+{
+  "name": "larva/laravel-live",
+  "description": "Live Extension for Laravel.",
+  "keywords": [ "laravel", "live", "larva" ],
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": "^7.4 || ^8.0",
+    "ext-json": "*",
+    "illuminate/console": "^6.0 || ^7.0 || ^8.0",
+    "illuminate/http": "^6.0 || ^7.0 || ^8.0",
+    "illuminate/support": "^6.0 || ^7.0 || ^8.0",
+    "illuminate/database": "^6.0 || ^7.0 || ^8.0",
+    "larva/support": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Larva\\Live\\": "src"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    },
+    "laravel": {
+      "providers": [
+        "Larva\\Live\\LiveServiceProvider"
+      ],
+      "aliases": {
+        "GeoIP": "Larva\\Live\\Live"
+      }
+    }
+  },
+  "prefer-stable": true
+}

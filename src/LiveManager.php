@@ -9,7 +9,7 @@ namespace Larva\Live;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Manager;
-use Larva\Live\Providers\AbstractProvider;
+use Larva\Live\Contracts\Provider as ProviderContract;
 
 /**
  * 直播管理
@@ -21,9 +21,9 @@ class LiveManager extends Manager implements Contracts\Factory
      * Get a driver instance.
      *
      * @param string $driver
-     * @return AbstractProvider
+     * @return ProviderContract
      */
-    public function with(string $driver)
+    public function with(string $driver): ProviderContract
     {
         return $this->driver($driver);
     }
@@ -33,14 +33,11 @@ class LiveManager extends Manager implements Contracts\Factory
      *
      * @param string $provider
      * @param array $config
-     * @return Providers\AbstractProvider
+     * @return ProviderContract
      */
-    public function buildProvider(string $provider, array $config)
+    public function buildProvider(string $provider, array $config): ProviderContract
     {
-        return new $provider($this->container['request'],
-            Arr::get($config, 'key', ''),
-            Arr::get($config, 'guzzle', [])
-        );
+        return new $provider($this->container['request'], Arr::get($config, 'key', ''), Arr::get($config, 'guzzle', []));
     }
 
     /**
@@ -56,27 +53,23 @@ class LiveManager extends Manager implements Contracts\Factory
     /**
      * Create an instance of the specified driver.
      *
-     * @return Providers\AbstractProvider
+     * @return ProviderContract
      */
-    protected function createAliyunDriver()
+    protected function createAliyunDriver(): ProviderContract
     {
         $config = $this->config->get("live.drivers.aliyun", []);
-        return $this->buildProvider(
-            Providers\AliyunProvider::class, $config
-        );
+        return $this->buildProvider(Providers\AliyunProvider::class, $config);
     }
 
     /**
      * Create an instance of the specified driver.
      *
-     * @return Providers\AbstractProvider
+     * @return ProviderContract
      */
-    protected function createTencentDriver()
+    protected function createTencentDriver(): ProviderContract
     {
         $config = $this->config->get("live.drivers.tencent", []);
-        return $this->buildProvider(
-            Providers\TencentProvider::class, $config
-        );
+        return $this->buildProvider(Providers\TencentProvider::class, $config);
     }
 
 }
